@@ -1,0 +1,8 @@
+# Convertisseur TDB vers DAT
+
+Convertit des bases de données thermodynamiques CALPHAD du format TDB vers le format DAT utilisé par FactSage.
+
+## Utilisation
+1. Télécharger convertisseur_tdb_dat.exe depuis le dépôt.
+2. Double-cliquer dessus, sélectionner le fichier TDB dans la fenêtre qui s'ouvre, puis saisir le nom du fichier DAT.
+3. Le fichier DAT est enregistré dans le même dossier que le fichier TDB. FactSage peut ensuite le convertir en un fichier de solutions (SLN) et un fichier de fonctions (FDB).
