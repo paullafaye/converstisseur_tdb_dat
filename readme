@@ -1,8 +1,21 @@
 # Convertisseur TDB vers DAT
-
-Convertit des bases de données thermodynamiques CALPHAD du format TDB vers le format DAT utilisé par FactSage.
+Convertit des bases de données thermodynamiques CALPHAD du format TDB vers le format DAT utilisé par FactSage (phases de solution).
 
 ## Utilisation
-1. Télécharger convertisseur_tdb_dat.exe depuis le dépôt.
-2. Double-cliquer dessus, sélectionner le fichier TDB dans la fenêtre qui s'ouvre, puis saisir le nom du fichier DAT.
-3. Le fichier DAT est enregistré dans le même dossier que le fichier TDB. FactSage peut ensuite le convertir en un fichier de solutions (SLN) et un fichier de fonctions (FDB).
+1. Télécharger `convertisseur_tdb_dat.exe` : cliquer sur le fichier dans la liste ci-dessus, puis sur l'icône de téléchargement (« Download raw file »), en haut à droite de la page du fichier.
+2. Double-cliquer sur l'exécutable. Aucune installation de Python n'est nécessaire.
+3. Sélectionner le fichier TDB dans la fenêtre qui s'ouvre, puis saisir le nom du fichier DAT.
+4. Le fichier DAT est enregistré dans le même dossier que le fichier TDB. FactSage peut ensuite le convertir en un fichier de solutions (SLN) et un fichier de fonctions (FDB).
+
+Au premier lancement, Windows peut afficher un avertissement, car l'exécutable n'est pas signé : cliquer sur « Informations complémentaires » (More info), puis sur « Exécuter quand même » (Run anyway).
+
+## Ce que le convertisseur prend en charge
+- Les énergies de Gibbs complètes des end-members et des paramètres d'interaction : termes T·ln(T) et T^n, plusieurs plages de température, appels à d'autres fonctions (GHSER...).
+- La génération automatique des fonctions SGTE dans le fichier DAT à partir des fonctions du TDB.
+- Les contributions magnétiques (paramètres TC et BMAGN).
+- La génération de tous les end-members issus des substitutions possibles dans les sous-réseaux. Un end-member absent du TDB est ajouté avec une enthalpie de formation de 5000 J/mol d'atomes, et un message les liste.
+- Les nombres de sites non entiers, multipliés pour obtenir les entiers exigés par le format DAT.
+
+## Remarques
+- Les composés stœchiométriques sont détectés et ne sont pas écrits dans le fichier DAT. La génération de la base de composés correspondante n'est pas incluse.
+- Si un élément du TDB ne peut pas être converti, un message d'erreur est affiché et la conversion se poursuit jusqu'au bout.
